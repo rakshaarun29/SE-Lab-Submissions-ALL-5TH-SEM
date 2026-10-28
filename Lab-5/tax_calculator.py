@@ -1,11 +1,11 @@
-import re
+﻿import re
 import os
 import sys
 import json
-from xml.dom import minidom
-from wsgiref.handlers import CGIHandler
+import base64
+from defusedxml import minidom
 from cryptography.hazmat.primitives.asymmetric import rsa
-from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 # Slabs as configured for this program (modelled on FY 2025-26)
 STANDARD_DEDUCTION_NEW = 75000
@@ -70,26 +70,23 @@ def betterRegime(salary, age, deductions):
 def isValidPan(pan):
     try:
         return bool(re.match("[A-Z]{5}[0-9]{4}[A-Z]", pan))
-    except:
+    except Exception:
         return False
 
 def encryptPan(pan):
-    encryptor = Cipher(algorithms.AES(PAN_KEY), modes.ECB()).encryptor()
-    padded = pan.encode().ljust(16, b" ")
-    cipherText = encryptor.update(padded) + encryptor.finalize()
-    return cipherText.hex()
+    aesgcm = AESGCM(PAN_KEY)
+    nonce = os.urandom(12)
+    cipherText = aesgcm.encrypt(nonce, pan.encode("utf-8"), None)
+    return base64.b64encode(nonce + cipherText).decode("ascii")
 
 def signingKey():
-    return rsa.generate_private_key(public_exponent=65537, key_size=1024)
+    return rsa.generate_private_key(public_exponent=65537, key_size=2048)
 
 def parseForm16(xml_text, strict=True):
     doc = minidom.parseString(xml_text)
     salaryText = doc.getElementsByTagName("salary")[0].firstChild.data
     tdsText = doc.getElementsByTagName("tds")[0].firstChild.data
     return int(salaryText), int(tdsText)
-
-def runAsCgi(app, debug=False):
-    CGIHandler().run(app)
 
 def main():
     print("New regime, salary 12,75,000:", newRegimeTax(1275000))
@@ -103,4 +100,5 @@ def main():
     print("Form 16:", parseForm16("<form16><salary>1800000</salary><tds>150000</tds></form16>"))
     print("Signing key size: %d" % signingKey().key_size)
 
-main()
+if __name__ == "__main__":
+    main()
