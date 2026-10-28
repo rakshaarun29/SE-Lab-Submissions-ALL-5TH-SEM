@@ -1,56 +1,48 @@
-# Lab 5: Static Code Analysis — Income Tax Calculator
+# Lab 5: Static Code Analysis
 
-**Your file:** `tax_calculator.py`
+## Project
+**Program:** `tax_calculator.py`
 
-Follow the lab handout for the full instructions.
+This lab uses Pylint, Bandit, and Flake8 to identify and address code quality, security, and formatting issues in a Python tax calculator.
 
-## About the program
+## Tools Used
+- **Pylint:** Checks code quality and maintainability.
+- **Bandit:** Identifies common security weaknesses.
+- **Flake8:** Checks Python style and formatting.
 
-A personal income-tax calculator. It works out tax under the new and old regimes (standard deduction, slab rates, Section 87A rebate, 80C/80D deductions and cess), picks the better regime, validates and encrypts PAN numbers, generates a signing key, reads salary and TDS from a Form-16 XML file, and can run as a CGI app. The slabs are those configured in the program (modelled on FY 2025-26) and are for teaching only, not tax advice.
+## Changes Made
+- Replaced AES-ECB encryption with AES-GCM encryption using a random nonce.
+- Increased the RSA key size to 2048 bits.
+- Replaced standard XML parsing with `defusedxml`.
+- Removed the unused CGI handler.
+- Improved PAN input validation.
+- Improved function naming, code structure, and formatting.
+- Corrected the tax-regime selection to choose the lower calculated tax.
 
-The code works, but only just. It has quality, style and security problems of the kind Pylint, Flake8 and Bandit are built to find.
+## Reports
+- `pylint_before.txt`
+- `pylint_after.txt`
+- `bandit_before.txt`
+- `bandit_after.txt`
+- `flake8_before.txt`
+- `flake8_after.txt`
 
-## What to do
+## Other Deliverables
+- `issues.md` — Summary of identified issues and fixes.
+- `reflection.md` — Reflection on the static analysis exercise.
 
-1. **Install the program's packages** (it uses Cryptography):
-   ```bash
-   python -m pip install cryptography
-   ```
+## Running the Program
+Install the dependencies:
 
-2. **Run it** and read the output carefully:
-   ```bash
-   python tax_calculator.py
-   ```
-   Check whether every tax figure it prints makes sense, then try changing the inputs in `main()` to see what happens. Not every problem in this file is something a tool will flag, so pay attention to output that looks wrong.
+```bash
+pip install -r requirements.txt
+```
 
-3. **Install the tools:**
-   ```bash
-   python -m pip install pylint bandit flake8 defusedxml
-   ```
+Run the program:
 
-4. **Run the analysis** and save the reports:
-   ```bash
-   python -m pylint tax_calculator.py > pylint_report.txt
-   python -m bandit -r tax_calculator.py > bandit_report.txt
-   python -m flake8 tax_calculator.py > flake8_report.txt
-   ```
+```bash
+python tax_calculator.py
+```
 
-5. **Document the issues** in `issues.md` using this table (at least 4 rows, high and medium severity first):
-
-   | Issue | Type | Line(s) | Description | Fix Approach |
-   |-------|------|---------|-------------|--------------|
-   | ... | ... | ... | ... | ... |
-
-6. **Fix the code.** Fix at least 4 of the issues you documented, then rerun all three tools to confirm they are gone. Repeat until you are satisfied. The program should still do its job when you are done.
-
-7. **Reflect.** Answer the four reflection questions from the handout in `reflection.md`.
-
-## Deliverables
-
-1. `tax_calculator.py`: your cleaned version, with at least 4 issues fixed.
-2. `issues.md`: the completed issue table.
-3. `reflection.md`: your answers to the reflection questions.
-
-**Target:** aim for a Pylint score above 9.5 on your final file. A perfect 10.00/10 is very good.
-
-Be ready to explain the bugs you found and how you fixed them. You may be called on to present.
+## Note
+The tax calculations are for educational purposes only and should not be treated as tax advice. The hard-coded encryption key is a lab limitation and must be replaced with secure key management before production use.   
