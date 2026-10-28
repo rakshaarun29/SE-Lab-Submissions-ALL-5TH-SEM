@@ -1,0 +1,23 @@
+[1mtax_calculator.py[m[36m:[m2[36m:[m1[36m:[m [1m[31mF401[m 'os' imported but unused
+[1mtax_calculator.py[m[36m:[m3[36m:[m1[36m:[m [1m[31mF401[m 'sys' imported but unused
+[1mtax_calculator.py[m[36m:[m4[36m:[m1[36m:[m [1m[31mF401[m 'json' imported but unused
+[1mtax_calculator.py[m[36m:[m16[36m:[m80[36m:[m [1m[31mE501[m line too long (82 > 79 characters)
+[1mtax_calculator.py[m[36m:[m18[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m34[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m36[36m:[m5[36m:[m [1m[31mF841[m local variable 'bracket' is assigned to but never used
+[1mtax_calculator.py[m[36m:[m36[36m:[m32[36m:[m [1m[31mE702[m multiple statements on one line (semicolon)
+[1mtax_calculator.py[m[36m:[m36[36m:[m34[36m:[m [1m[31mF841[m local variable 'checked' is assigned to but never used
+[1mtax_calculator.py[m[36m:[m43[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m50[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m63[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m70[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m73[36m:[m5[36m:[m [1m[31mE722[m do not use bare 'except'
+[1mtax_calculator.py[m[36m:[m76[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m82[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m85[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m91[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m94[36m:[m1[36m:[m [1m[31mE302[m expected 2 blank lines, found 1
+[1mtax_calculator.py[m[36m:[m98[36m:[m80[36m:[m [1m[31mE501[m line too long (81 > 79 characters)
+[1mtax_calculator.py[m[36m:[m102[36m:[m80[36m:[m [1m[31mE501[m line too long (104 > 79 characters)
+[1mtax_calculator.py[m[36m:[m103[36m:[m80[36m:[m [1m[31mE501[m line too long (96 > 79 characters)
+[1mtax_calculator.py[m[36m:[m106[36m:[m1[36m:[m [1m[31mE305[m expected 2 blank lines after class or function definition, found 1
